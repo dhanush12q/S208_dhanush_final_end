@@ -1,0 +1,184 @@
+/* StudentDashboard.css
+   Left-list sidebar + main content
+   Colors follow your existing palette (blue accents, red logout).
+*/
+
+:root {
+  --sidebar-expanded: 260px;
+  --sidebar-collapsed: 80px;
+}
+
+/* wrapper */
+.student-dashboard-wrap {
+  display: flex;
+  min-height: 100vh;
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #e3f0fa 60%, #d8e9fa 100%);
+  box-sizing: border-box;
+}
+
+/* sidebar */
+.student-sidebar {
+  background: #fff;
+  border-right: 2px solid #e8f0fb;
+  padding: 16px;
+  height: 100vh;
+  box-shadow: 4px 0 18px rgba(0,0,0,0.04);
+  transition: width 0.18s ease;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+}
+
+.student-sidebar.expanded { width: var(--sidebar-expanded); }
+.student-sidebar.collapsed { width: var(--sidebar-collapsed); padding-left: 10px; padding-right: 10px; }
+
+/* header area in sidebar */
+.sidebar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-icon { font-size: 1.5rem; }
+.brand-text { font-weight: 900; color: #197fd7; font-size: 1.05rem; }
+
+/* collapse button */
+.collapse-btn {
+  background: none;
+  border: none;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+/* list */
+.student-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.student-item {
+  margin-bottom: 8px;
+  border-radius: 8px;
+  transition: background 0.12s;
+}
+
+.student-item.active {
+  background: linear-gradient(90deg,#e8f4ff,#dfefff);
+  box-shadow: 0 6px 14px rgba(37,118,220,0.06);
+}
+
+.item-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 8px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 700;
+  color: #145ca7;
+}
+
+.item-icon { font-size: 1.2rem; width: 28px; text-align: center; }
+
+/* hide labels when collapsed */
+.student-sidebar.collapsed .item-label { display: none; }
+
+/* footer hint */
+.sidebar-foot { margin-top: 18px; color: #6b7f96; font-size: 0.88rem; }
+
+/* main content */
+.student-main {
+  flex: 1;
+  padding: 28px;
+  box-sizing: border-box;
+  width: calc(100% - var(--sidebar-expanded));
+  transition: width 0.18s, margin-left 0.18s;
+}
+
+/* adjust main width when collapsed (CSS sibling selector not used; width computed with var) */
+.student-sidebar.collapsed + .student-main,
+.student-main.collapsed {
+  width: calc(100% - var(--sidebar-collapsed));
+}
+
+/* header */
+.student-header { margin-bottom: 14px; }
+.page-title {
+  color: #197fd7;
+  font-size: 1.6rem;
+  margin: 0;
+  font-weight: 900;
+}
+
+/* content card */
+.student-content { display: flex; justify-content: center; }
+.home-card {
+  max-width: 920px;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(16,52,99,0.04);
+  box-sizing: border-box;
+  color: #334a63;
+}
+
+.home-card h2 { margin-top: 0; color: #145ca7; font-size: 1.3rem; }
+.home-card p { line-height: 1.6; margin: 8px 0 14px 0; }
+
+/* feature grid */
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.feature {
+  background: #f7fbff;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: left;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.f-icon { font-size: 1.35rem; width: 36px; text-align: center; }
+.f-title { font-weight: 800; color: #197fd7; }
+.f-desc { font-size: 0.95rem; color: #3b556b; }
+
+/* note */
+.note { margin-top: 16px; font-weight: 700; color: #103d7c; }
+
+/* responsive */
+@media (max-width: 900px) {
+  .student-sidebar.expanded { width: 220px; }
+  .student-main { padding: 20px; width: calc(100% - 220px); }
+}
+@media (max-width: 700px) {
+  /* make sidebar horizontal top nav on small screens */
+  .student-dashboard-wrap { flex-direction: column; }
+  .student-sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    box-shadow: none;
+    display: flex;
+    gap: 10px;
+    padding: 10px 12px;
+    align-items: center;
+  }
+  .student-sidebar.collapsed { width: 100%; }
+  .student-list { display: flex; gap: 8px; overflow-x: auto; }
+  .student-item { margin: 0; }
+  .student-main { width: 100%; padding: 14px; }
+}

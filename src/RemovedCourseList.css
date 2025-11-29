@@ -1,0 +1,115 @@
+/* Overall page container */
+.removed-courses-container {
+  max-width: 900px;
+  margin: 48px auto;
+  padding: 2.2rem 1.7rem;
+  font-family: Inter, Segoe UI, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Header containing title + buttons */
+.removed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+/* Title */
+.removed-header h2 {
+  color: #e23a3a;
+  font-weight: 900;
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Button row */
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Buttons (same design as other pages) */
+.btn.back-btn {
+  background: #e23a3a;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.15s;
+}
+
+.btn.back-btn:hover {
+  background: #c41717;
+}
+
+/* Table styling */
+.removed-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 6px 20px #00000015;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.removed-table th {
+  background: #e23a3a;
+  color: white;
+  padding: 14px;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.removed-table td {
+  padding: 12px;
+  font-size: 1rem;
+  color: #444;
+  border-bottom: 1px solid #f1dcdc;
+}
+
+.removed-table tr:nth-child(even) {
+  background: #fff5f5;
+}
+
+.removed-table tr:hover {
+  background: #ffe1e1;
+}
+
+/* No course */
+.no-course {
+  font-size: 1.15rem;
+  color: #a51616;
+  font-weight: 600;
+  opacity: 0.9;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .removed-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-buttons {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .removed-courses-container {
+    padding: 1.4rem 1rem;
+  }
+
+  .removed-table th,
+  .removed-table td {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}

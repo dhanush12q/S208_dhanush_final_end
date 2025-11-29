@@ -1,0 +1,165 @@
+/* Page background & base setup */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #e3f0fa 70%, #d8e9fa 100%);
+}
+
+/* ---- MAIN CHANGE: REMOVE VERTICAL CENTER ---- */
+.register-bg {
+  width: 100%;
+  min-height: 100vh;
+  display: block;     /* instead of flex center */
+  padding-top: 25px;  /* push slightly from very top */
+}
+
+/* container aligned to top */
+.main-container {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;     /* center horizontally only */
+}
+
+/* form stays at top, no vertical centering */
+.registration-form.table-form {
+  width: 100%;
+  padding: 20px 20px;
+  background: transparent;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+/* heading */
+.registration-form.table-form h2 {
+  margin: 0 0 12px 0;
+  font-size: 1.45rem;
+  color: #197fd7;
+  font-weight: 900;
+  display: flex;
+  gap: 10px;
+}
+
+/* table layout */
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-table th {
+  width: 34%;
+  text-align: right;
+  padding: 10px 18px 10px 0;
+  font-weight: 800;
+  color: #267be7;
+  font-size: 1rem;
+}
+
+.form-table td {
+  padding: 8px 0;
+}
+
+/* inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  max-width: 520px;
+  padding: 12px 11px;
+  border-radius: 8px;
+  border: 1px solid #dbeaf8;
+  background: #f7fbff;
+  outline: none;
+  font-size: 1rem;
+  transition: box-shadow .12s, border-color .12s;
+}
+
+input:focus, select:focus {
+  border-color: #197fd7;
+  box-shadow: 0 8px 20px rgba(23,125,200,0.08);
+}
+
+/* Inline password helper */
+.pwd-inline {
+  margin-top: 8px;
+  font-weight: 800;
+  color: #23455f;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 520px;
+  background: rgba(255,255,255,0.65);
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(230,240,255,0.8);
+}
+
+/* actions */
+.actions-td { padding-top: 12px; }
+
+.btn {
+  border: none;
+  padding: 12px 30px;
+  border-radius: 9px;
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+  color: #fff;
+}
+
+.primary-btn {
+  background: linear-gradient(90deg, #197fd7 78%, #166ec3 109%);
+}
+
+.next-btn {
+  background: linear-gradient(90deg, #23c0dd 78%, #1773bb 109%);
+}
+
+.success-message {
+  background: rgba(34, 176, 90, 0.12);
+  color: #1b7b3a;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-right: 12px;
+  font-weight: 800;
+}
+
+/* snackbar */
+#snackbar {
+  visibility: hidden;
+  min-width: 260px;
+  background: #22303ae8;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 12px 18px;
+  position: fixed;
+  left: 50%;
+  bottom: 36px;
+  transform: translateX(-50%) scale(0.98);
+  opacity: 0;
+  transition: opacity .25s, bottom .18s, transform .18s;
+  z-index: 1200;
+}
+
+#snackbar.show {
+  visibility: visible;
+  opacity: 0.95;
+  bottom: 52px;
+  transform: translateX(-50%) scale(1.02);
+}
+
+/* mobile stacking */
+@media (max-width: 820px) {
+  .form-table th {
+    text-align: left;
+    padding-bottom: 6px;
+  }
+  .form-table tr {
+    display: block;
+    margin-bottom: 14px;
+  }
+  .pwd-inline { white-space: normal; }
+}

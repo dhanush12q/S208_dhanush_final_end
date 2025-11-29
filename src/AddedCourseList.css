@@ -1,0 +1,115 @@
+/* Container */
+.added-courses-container {
+  max-width: 900px;
+  margin: 48px auto;
+  padding: 2.2rem 1.7rem;
+  font-family: Inter, Segoe UI, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Header row: title + buttons */
+.added-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+/* Title */
+.added-header h2 {
+  color: #267be7;
+  font-weight: 900;
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Button group */
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Buttons */
+.btn.back-btn {
+  background: #267be7;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.15s;
+}
+
+.btn.back-btn:hover {
+  background: #145ca7;
+}
+
+/* Table */
+.added-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px #00000015;
+}
+
+.added-table th {
+  background: #267be7;
+  color: white;
+  padding: 14px;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.added-table td {
+  padding: 12px;
+  font-size: 1rem;
+  color: #0e2b5b;
+  border-bottom: 1px solid #e6eefc;
+}
+
+.added-table tr:nth-child(even) {
+  background: #f3f7ff;
+}
+
+.added-table tr:hover {
+  background: #e3eeff;
+}
+
+/* No course */
+.no-course {
+  font-size: 1.15rem;
+  color: #1a3d7c;
+  font-weight: 600;
+  opacity: 0.9;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .added-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .header-buttons {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .added-courses-container {
+    padding: 1.4rem 1rem;
+  }
+
+  .added-table th,
+  .added-table td {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}

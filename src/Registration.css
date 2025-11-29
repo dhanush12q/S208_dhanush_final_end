@@ -1,0 +1,197 @@
+/* Registration.css
+   Table-style registration UI, responsive, matching your blue palette.
+*/
+
+:root {
+  --blue-1: #197fd7;
+  --blue-2: #267be7;
+  --bg-grad: linear-gradient(120deg, #e3f0fa 60%, #d8e9fa 100%);
+}
+
+/* Page */
+.reg-page {
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+  background: var(--bg-grad);
+  min-height: 100vh;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.reg-header {
+  max-width: 980px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.reg-title h1 {
+  margin: 0;
+  color: #123e76;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+.reg-sub {
+  margin: 4px 0 0 0;
+  color: #375a78;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.reg-actions { display:flex; gap:8px; align-items:center; }
+
+/* Dashboard button */
+.dash-btn {
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #23c0dd 70%, #197fd7 110%);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(25,125,215,0.18);
+}
+.dash-btn:hover { transform: translateY(-2px); }
+
+/* Main layout: two vertical panels stacked on small screens */
+.reg-main {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: start;
+  box-sizing: border-box;
+}
+@media (max-width: 880px) {
+  .reg-main { grid-template-columns: 1fr; }
+}
+
+/* Panels */
+.reg-panel { background: transparent; padding: 0; }
+.panel-title {
+  margin: 0 0 12px 0;
+  color: var(--blue-1);
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+
+/* Form table */
+.reg-form { width: 100%; }
+.form-table { width: 100%; border-collapse: collapse; }
+.form-table th,
+.form-table td {
+  padding: 8px 6px;
+  vertical-align: middle;
+}
+.form-table th {
+  width: 38%;
+  text-align: left;
+  color: var(--blue-2);
+  font-weight: 800;
+  font-size: 0.98rem;
+  padding-right: 12px;
+}
+.form-table td { width: 62%; }
+
+.select-on-top,
+#course-select {
+  width: 100%;
+  max-width: 100%;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid #dbeaf8;
+  background: #f7fbff;
+  font-size: 0.96rem;
+  outline: none;
+  box-sizing: border-box;
+}
+.select-on-top:focus,
+#course-select:focus {
+  border-color: var(--blue-1);
+  box-shadow: 0 8px 20px rgba(23,125,200,0.08);
+}
+
+/* Form actions cell */
+.form-actions-td {
+  padding-top: 4px;
+}
+.btn, .primary-btn {
+  background: linear-gradient(90deg, #23c0dd 61%, #197fd7 109%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.14s;
+  box-shadow: 0 4px 12px rgba(25,125,215,0.10);
+}
+.btn:hover, .primary-btn:hover {
+  background: linear-gradient(93deg, #166ec3 82%, #267be7 113%);
+}
+
+/* Registered table */
+.table-wrapper { width: 100%; overflow-x: auto; border-radius: 10px; }
+.reg-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 420px;
+  background: white;
+  box-shadow: 0 10px 26px rgba(16,52,99,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.reg-table thead th {
+  background: linear-gradient(90deg, var(--blue-2), var(--blue-1));
+  color: #fff;
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 800;
+  font-size: 0.98rem;
+}
+.reg-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eef6ff;
+  color: #123a59;
+  font-size: 0.96rem;
+}
+.reg-table tbody tr:nth-child(even) { background: #fbfdff; }
+.reg-table tbody tr:hover { background: #eef8ff; }
+
+/* small remove button */
+.remove-small {
+  background: #e23a3a;
+  color: #fff;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.remove-small:hover { background: #c41717; transform: translateY(-1px); }
+
+/* Empty state */
+.empty-state {
+  padding: 20px;
+  color: #446378;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .reg-table { box-shadow: none; background: transparent; min-width: 0; }
+  .reg-table thead { display: none; }
+  .reg-table tbody tr {
+    display: block; margin: 10px 0; background: #fff;
+    border-radius: 10px; box-shadow: 0 8px 20px rgba(16,52,99,0.04); padding: 10px;
+  }
+  .reg-table tbody td { display: flex; justify-content: space-between; padding: 8px 10px; border-bottom: none; }
+  .reg-table tbody td[data-label]:before { content: attr(data-label); font-weight: 800; color: var(--blue-2); margin-right: 10px; }
+  .dash-btn { width: 100%; }
+  .reg-actions { width: 100%; display: flex; justify-content: flex-end; }
+  .form-table th, .form-table td { display: block; width: 100%; }
+  .form-actions-td { padding-top: 8px; }
+}

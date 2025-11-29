@@ -1,0 +1,208 @@
+/* ScheduleBuilder.css
+   Table-based schedule builder. Matches blue palette used elsewhere.
+*/
+
+:root{
+  --blue-1: #197fd7;
+  --blue-2: #267be7;
+  --bg-grad: linear-gradient(120deg, #e3f0fa 60%, #d8e9fa 100%);
+}
+
+/* Page */
+.sb-page {
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+  background: var(--bg-grad);
+  min-height: 100vh;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.sb-header {
+  max-width: 1100px;
+  margin: 0 auto 18px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sb-title h1 {
+  margin: 0;
+  color: #123e76;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+.sb-sub {
+  margin: 6px 0 0;
+  color: #375a78;
+  font-weight: 600;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+/* Controls */
+.sb-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* search */
+.sb-search {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #dbeaf8;
+  background: #f7fbff;
+  outline: none;
+  min-width: 220px;
+  box-shadow: 0 6px 20px rgba(17,82,151,0.04);
+}
+.sb-search:focus {
+  border-color: var(--blue-1);
+  box-shadow: 0 8px 24px rgba(23,125,200,0.10);
+}
+
+/* Dashboard button */
+.dash-btn {
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #23c0dd 70%, #197fd7 110%);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(25,125,215,0.18);
+}
+.dash-btn:hover { transform: translateY(-2px); }
+
+/* Main content columns */
+.sb-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 20px;
+  align-items: start;
+  box-sizing: border-box;
+}
+
+/* Make panels full-width on small screens */
+@media (max-width: 920px) {
+  .sb-main { grid-template-columns: 1fr; }
+}
+
+/* Panel styling */
+.sb-panel {
+  background: transparent;
+  padding: 0;
+}
+
+/* table wrapper */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 10px;
+}
+
+/* table */
+.sb-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 420px;
+  background: white;
+  box-shadow: 0 10px 26px rgba(16,52,99,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sb-table.small { min-width: 360px; }
+
+/* header row */
+.sb-table thead th {
+  background: linear-gradient(90deg, var(--blue-2), var(--blue-1));
+  color: #fff;
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 800;
+  font-size: 0.98rem;
+}
+
+/* cells */
+.sb-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eef6ff;
+  color: #123a59;
+  font-size: 0.96rem;
+}
+
+/* zebra + hover */
+.sb-table tbody tr:nth-child(even) { background: #fbfdff; }
+.sb-table tbody tr:hover { background: #eef8ff; transform: translateY(-1px); }
+
+/* checkbox styling */
+.checkbox-wrap { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.checkbox-wrap input[type="checkbox"] { display: none; }
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 2px solid #cfeafc;
+  background: #fff;
+  display: inline-block;
+  box-sizing: border-box;
+  transition: background 0.12s, border-color 0.12s;
+}
+.checkbox-wrap input[type="checkbox"]:checked + .checkmark {
+  background: linear-gradient(90deg, #23c0dd, #197fd7);
+  border-color: transparent;
+  box-shadow: 0 3px 8px rgba(25,125,215,0.18);
+}
+
+/* small remove button */
+.remove-small {
+  background: #e23a3a;
+  color: #fff;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.remove-small:hover { background: #c41717; transform: translateY(-1px); }
+
+/* empty state */
+.empty-state {
+  padding: 24px;
+  color: #446378;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* responsive: convert tables to stacked cards on very small screens */
+@media (max-width: 640px) {
+  .sb-table { box-shadow: none; background: transparent; min-width: 0; }
+  .sb-table thead { display: none; }
+  .sb-table tbody tr {
+    display: block;
+    margin: 10px 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(16,52,99,0.04);
+    padding: 12px;
+  }
+  .sb-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: none;
+  }
+  .sb-table tbody td[data-label]:before {
+    content: attr(data-label);
+    font-weight: 800;
+    color: var(--blue-2);
+    margin-right: 12px;
+  }
+  .dash-btn { width: 100%; }
+  .sb-controls { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+}
